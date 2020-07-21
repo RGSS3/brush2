@@ -36,6 +36,7 @@ File.write "tmp1", add.join("\n") + "\n" + x
 system "cpp tmp1 > tmp2"
 text = File.read "tmp2"
 text.gsub!(/^# \d+ .*$/, "")
+Dir.glob("./rb/*.rb", &method(:require))
 s = ERB.new(text).result(binding)
 File.write ARGV[1], %{#include <bits/stdc++.h>
 using namespace std;
